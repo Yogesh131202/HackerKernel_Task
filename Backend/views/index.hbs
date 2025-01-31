@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Headings */
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Form Container */
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Input Fields */
+        input, select {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Buttons */
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Export Button */
+        .export-btn {
+            background: #28a745;
+        }
+
+        .export-btn:hover {
+            background: #1e7e34;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>Task Manager</h1>
+
+    <!-- Add User Form -->
+    <div class="container">
+        <h2>Add User</h2>
+        <form action="/add-user" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="mobile" placeholder="Mobile" required>
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+    
+    <!-- Assign Task Form -->
+    <div class="container">
+        <h2>Assign Task</h2>
+        <form action="/add-task" method="POST">
+            {{!-- <select name="name">
+                {{#each users}}
+                <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select> --}}
+            <input type="text" name="name" placeholder="eg: Yogesh, Rohan, Ram, Harshi" required>
+            <input type="text" name="taskName" placeholder="Task Name" required>
+            <select name="taskType">
+                <option value="Pending">Pending</option>
+                <option value="Done">Done</option>
+            </select>
+            <button type="submit">Assign Task</button>
+        </form>
+    </div>
+
+    <!-- Export Button -->
+    <div class="container">
+        <h2>Export Data</h2>
+        <a href="/export"><button class="export-btn">Export to Excel</button></a>
+    </div>
+
+</body>
+</html>
